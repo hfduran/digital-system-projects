@@ -1,0 +1,78 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Tue Sep 12 00:10:39 2023
+[*]
+[dumpfile] "/home/hfduran/progs/labdig2/atv2/rx_serial_7O1/wave.vcd"
+[dumpfile_mtime] "Mon Sep 11 23:58:18 2023"
+[dumpfile_size] 1591836
+[savefile] "/home/hfduran/progs/labdig2/atv2/rx_serial_7O1/wave.gtkw"
+[timestart] 0
+[size] 1920 1055
+[pos] -1 -1
+*-35.268597 24800000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] rx_serial_tb.
+[treeopen] rx_serial_tb.dut.
+[sst_width] 222
+[signals_width] 190
+[sst_expanded] 1
+[sst_vpaned_height] 312
+@200
+--- Entradas --
+@28
+rx_serial_tb.serialdata[7:0]
+rx_serial_tb.entrada_serial_in
+@200
+-
+--- Internals --
+@28
+rx_serial_tb.dut.s_tick
+rx_serial_tb.dut.u2_fd.s_saida_desloc[10:0]
+@22
+rx_serial_tb.dut.s_estado[3:0]
+@200
+-
+--- Saidas --
+@28
+rx_serial_tb.dut.s_dados_ascii[6:0]
+rx_serial_tb.dut.paridade_recebida
+@200
+-
+@c00420
+rx_serial_tb.caso
+@28
+(0)rx_serial_tb.caso
+(1)rx_serial_tb.caso
+(2)rx_serial_tb.caso
+(3)rx_serial_tb.caso
+(4)rx_serial_tb.caso
+(5)rx_serial_tb.caso
+(6)rx_serial_tb.caso
+(7)rx_serial_tb.caso
+(8)rx_serial_tb.caso
+(9)rx_serial_tb.caso
+(10)rx_serial_tb.caso
+(11)rx_serial_tb.caso
+(12)rx_serial_tb.caso
+(13)rx_serial_tb.caso
+(14)rx_serial_tb.caso
+(15)rx_serial_tb.caso
+(16)rx_serial_tb.caso
+(17)rx_serial_tb.caso
+(18)rx_serial_tb.caso
+(19)rx_serial_tb.caso
+(20)rx_serial_tb.caso
+(21)rx_serial_tb.caso
+(22)rx_serial_tb.caso
+(23)rx_serial_tb.caso
+(24)rx_serial_tb.caso
+(25)rx_serial_tb.caso
+(26)rx_serial_tb.caso
+(27)rx_serial_tb.caso
+(28)rx_serial_tb.caso
+(29)rx_serial_tb.caso
+(30)rx_serial_tb.caso
+(31)rx_serial_tb.caso
+@1401200
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0

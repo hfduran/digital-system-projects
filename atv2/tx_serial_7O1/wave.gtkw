@@ -1,0 +1,57 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Sun Sep 10 21:42:07 2023
+[*]
+[dumpfile] "/home/hfduran/progs/labdig2/atv2/tx_serial_7O1/wave.vcd"
+[dumpfile_mtime] "Sun Sep 10 14:52:26 2023"
+[dumpfile_size] 2359599
+[savefile] "/home/hfduran/progs/labdig2/atv2/tx_serial_7O1/wave.gtkw"
+[timestart] 0
+[size] 1920 1016
+[pos] -1 -1
+*-33.847317 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tx_serial_7o1_tb.
+[treeopen] tx_serial_7o1_tb.dut.
+[treeopen] tx_serial_7o1_tb.dut.u2_fd.
+[sst_width] 233
+[signals_width] 222
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@200
+--- Entradas --
+@28
+tx_serial_7o1_tb.partida_in
+tx_serial_7o1_tb.reset_in
+@c00028
++{dados} tx_serial_7o1_tb.dados_ascii_7_in[6:0]
+@28
+(0)tx_serial_7o1_tb.dados_ascii_7_in[6:0]
+(1)tx_serial_7o1_tb.dados_ascii_7_in[6:0]
+(2)tx_serial_7o1_tb.dados_ascii_7_in[6:0]
+(3)tx_serial_7o1_tb.dados_ascii_7_in[6:0]
+(4)tx_serial_7o1_tb.dados_ascii_7_in[6:0]
+(5)tx_serial_7o1_tb.dados_ascii_7_in[6:0]
+(6)tx_serial_7o1_tb.dados_ascii_7_in[6:0]
+@1401200
+-group_end
+@200
+--- Internos --
+@28
+tx_serial_7o1_tb.dut.db_tick
+tx_serial_7o1_tb.dut.s_carrega
+tx_serial_7o1_tb.dut.s_desloca
+tx_serial_7o1_tb.dut.s_conta
+tx_serial_7o1_tb.dut.s_zera
+@22
+tx_serial_7o1_tb.dut.u1_uc.db_estado[3:0]
+@28
+tx_serial_7o1_tb.dut.u2_fd.s_saida[10:0]
+@200
+--- Saidas --
+@28
+tx_serial_7o1_tb.saida_serial_out
+tx_serial_7o1_tb.pronto_out
+@420
+tx_serial_7o1_tb.caso
+[pattern_trace] 1
+[pattern_trace] 0
