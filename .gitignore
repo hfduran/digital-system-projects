@@ -1,5 +1,4 @@
 quartus/
 modelsim/
 *.png
-*.cf
 *.vcd
