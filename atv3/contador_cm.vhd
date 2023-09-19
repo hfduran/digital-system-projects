@@ -20,6 +20,31 @@ port (
 end entity;
 
 architecture arch of contador_cm is
+    component contador_cm_uc is 
+        port ( 
+            clock       : in  std_logic;
+            reset       : in  std_logic;
+            tick        : in  std_logic;
+            pulso       : in  std_logic;
+            zera        : out std_logic;
+            conta       : out std_logic;
+            pronto      : out std_logic;
+            db_estado   : out std_logic_vector(3 downto 0)
+        );
+    end component;
+
+    component contador_bcd_3digitos is 
+        port ( 
+            clock   : in  std_logic;
+            zera    : in  std_logic;
+            conta   : in  std_logic;
+            digito0 : out std_logic_vector(3 downto 0);
+            digito1 : out std_logic_vector(3 downto 0);
+            digito2 : out std_logic_vector(3 downto 0);
+            fim     : out std_logic
+        );
+    end component;
+
     component contador_m is
         generic (
             constant M : integer := 50;  
@@ -35,36 +60,23 @@ architecture arch of contador_cm is
         );
     end component contador_m;
 
-    component contador_bcd_3digitos is 
-        port ( 
-            clock   : in  std_logic;
-            zera    : in  std_logic;
-            conta   : in  std_logic;
-            digito0 : out std_logic_vector(3 downto 0);
-            digito1 : out std_logic_vector(3 downto 0);
-            digito2 : out std_logic_vector(3 downto 0);
-            fim     : out std_logic
-        );
-    end component;
+    signal s_clock, s_zera, s_conta, s_tick: std_logic;
 
-    component contador_cm_uc is 
-        port ( 
-            clock       : in  std_logic;
-            reset       : in  std_logic;
-            pulso       : in  std_logic;
-            tick        : in  std_logic;
-            conta       : out std_logic;
-            zera        : out std_logic;
-            pronto      : out std_logic;
-            db_estado  : out std_logic_vector(3 downto 0)
-        );
-    end component;
-
-    signal s_clock, s_tick, s_conta, s_zera: std_logic;
-
-    begin
+begin
     s_clock <= clock;
-    U0: contador_m
+    UC: contador_cm_uc
+        port map(
+            clock       => s_clock,
+            reset       => reset,
+            pulso       => pulso,
+            tick        => s_tick,
+            conta       => s_conta,
+            zera        => s_zera,
+            pronto      => pronto,
+            db_estado   => open
+        );
+
+    CM: contador_m
         generic map (
             M => R,
             N => N
@@ -77,7 +89,8 @@ architecture arch of contador_cm is
             fim   => open,
             meio  => s_tick
         );
-    U1: contador_bcd_3digitos
+        
+    CBCD: contador_bcd_3digitos
         port map (
             clock   => s_clock,
             zera    => s_zera,
@@ -86,16 +99,5 @@ architecture arch of contador_cm is
             digito1 => digito1,
             digito2 => digito2,
             fim     => fim
-        );
-    U2: contador_cm_uc
-        port map(
-            clock       => s_clock,
-            reset       => reset,
-            pulso       => pulso,
-            tick        => s_tick,
-            conta       => s_conta,
-            zera        => s_zera,
-            pronto      => pronto,
-            db_estado   => open
         );
 end architecture;

@@ -1,43 +1,43 @@
 v 4
-file . "contador_bcd_3digitos.vhd" "1c45360284fb89565a7eb9331360d7caac4f56f2" "20230918225044.532":
-  entity contador_bcd_3digitos at 17( 739) + 0 on 37;
-  architecture comportamental of contador_bcd_3digitos at 33( 1177) + 0 on 38;
-file . "interface_hcsr04_tb.vhd" "bba00229ecbd81f8e7df076877aa219617030b0c" "20230918180747.773":
-  entity interface_hcsr04_tb at 17( 754) + 0 on 33;
-  architecture tb of interface_hcsr04_tb at 23( 841) + 0 on 34;
-file . "interface_hcsr04.vhd" "11b8c0502e05a62f157e4216f2f4bac993bf2d0d" "20230918180747.770":
-  entity interface_hcsr04 at 1( 0) + 0 on 31;
-  architecture structural of interface_hcsr04 at 17( 420) + 0 on 32;
-file . "interface_hcsr04_uc.vhd" "c7cf38277ae40e6ce13b9325eef55375747ad7de" "20230918180747.767":
-  entity interface_hcsr04_uc at 17( 749) + 0 on 29;
-  architecture fsm_arch of interface_hcsr04_uc at 35( 1266) + 0 on 30;
-file . "interface_hcsr04_df.vhd" "bce78a4f2e1bf6126b58a00ca6404d5450bad1f3" "20230918180747.764":
-  entity interface_hcsr04_df at 1( 0) + 0 on 27;
-  architecture structural of interface_hcsr04_df at 20( 582) + 0 on 28;
-file . "contador_cm_tb.vhd" "0f0c42d212f3beb399e49392112d7336c00fe8eb" "20230918180747.761":
-  entity contador_cm_tb at 17( 756) + 0 on 25;
-  architecture tb of contador_cm_tb at 23( 844) + 0 on 26;
-file . "contador_cm.vhd" "88ebaeb7cfe544c3558e6237b04cc8e64db3d12a" "20230918180747.758":
-  entity contador_cm at 1( 0) + 0 on 23;
-  architecture arch of contador_cm at 22( 467) + 0 on 24;
-file . "contador_cm_uc.vhd" "2e001e0ea6cba0068919438559c9e16f3519bbe5" "20230918180747.754":
-  entity contador_cm_uc at 1( 0) + 0 on 21;
-  architecture fsm_arch of contador_cm_uc at 17( 423) + 0 on 22;
-file . "registrador_n.vhd" "2342a586e10123b28155d3ecb8f051ab4052f712" "20230918180747.752":
-  entity registrador_n at 33( 1413) + 0 on 19;
-  architecture comportamental of registrador_n at 49( 1785) + 0 on 20;
-file . "edge_detector.vhd" "8141dd61bc940f8524a77d7f3263dcef578e73b0" "20230918180747.750":
-  entity edge_detector at 19( 839) + 0 on 17;
-  architecture behavioral of edge_detector at 30( 1069) + 0 on 18;
-file . "gerador_pulso.vhd" "0433b73162991673dee57cb03b7c8953f4893f6e" "20230918180747.748":
-  entity gerador_pulso at 18( 792) + 0 on 15;
-  architecture fsm_arch of gerador_pulso at 36( 1186) + 0 on 16;
-file . "hexa7seg.vhd" "b1a6c6e082a35c0dfdbf79f61832a4cfaa126e90" "20230918180747.744":
-  entity hexa7seg at 22( 1022) + 0 on 13;
-  architecture comportamental of hexa7seg at 32( 1222) + 0 on 14;
+file . "exp3_sensor.vhd" "f64d48df2cabfed858c33bd6294cb1b78c02dd97" "20230919001312.996":
+  entity exp3_sensor at 1( 0) + 0 on 4;
+  architecture structural of exp3_sensor at 23( 704) + 0 on 4;
 file . "contador_m.vhd" "29a70d42722d386c0aec57e8df600175a95d89f0" "20230918180747.742":
   entity contador_m at 20( 809) + 0 on 11;
   architecture contador_m_arch of contador_m at 39( 1243) + 0 on 12;
-file . "exp3_sensor.vhd" "b0babc9a5c72460b0380a54a3483e66fb405d31a" "20230918180756.958":
-  entity exp3_sensor at 1( 0) + 0 on 35;
-  architecture structural of exp3_sensor at 22( 583) + 0 on 36;
+file . "hexa7seg.vhd" "b1a6c6e082a35c0dfdbf79f61832a4cfaa126e90" "20230918180747.744":
+  entity hexa7seg at 22( 1022) + 0 on 13;
+  architecture comportamental of hexa7seg at 32( 1222) + 0 on 14;
+file . "gerador_pulso.vhd" "0433b73162991673dee57cb03b7c8953f4893f6e" "20230918180747.748":
+  entity gerador_pulso at 18( 792) + 0 on 15;
+  architecture fsm_arch of gerador_pulso at 36( 1186) + 0 on 16;
+file . "edge_detector.vhd" "8141dd61bc940f8524a77d7f3263dcef578e73b0" "20230918180747.750":
+  entity edge_detector at 19( 839) + 0 on 17;
+  architecture behavioral of edge_detector at 30( 1069) + 0 on 18;
+file . "registrador_n.vhd" "2342a586e10123b28155d3ecb8f051ab4052f712" "20230918180747.752":
+  entity registrador_n at 33( 1413) + 0 on 19;
+  architecture comportamental of registrador_n at 49( 1785) + 0 on 20;
+file . "contador_cm_uc.vhd" "34c2a38e5292b9e2fd154059c3e915ea71554911" "20230919001313.057":
+  entity contador_cm_uc at 1( 0) + 0 on 45;
+  architecture fsm_arch of contador_cm_uc at 18( 442) + 0 on 46;
+file . "contador_cm.vhd" "554dd3d212453907769c1928384aa458463edaec" "20230919001313.057":
+  entity contador_cm at 1( 0) + 0 on 43;
+  architecture arch of contador_cm at 22( 467) + 0 on 44;
+file . "contador_cm_tb.vhd" "0f0c42d212f3beb399e49392112d7336c00fe8eb" "20230918180747.761":
+  entity contador_cm_tb at 17( 756) + 0 on 25;
+  architecture tb of contador_cm_tb at 23( 844) + 0 on 26;
+file . "interface_hcsr04_df.vhd" "0f8e5d4f40cade43543f31a1d8d8178b47c8682b" "20230919001313.057":
+  entity interface_hcsr04_df at 1( 0) + 0 on 41;
+  architecture arch of interface_hcsr04_df at 21( 608) + 0 on 42;
+file . "interface_hcsr04_uc.vhd" "c7cf38277ae40e6ce13b9325eef55375747ad7de" "20230918180747.767":
+  entity interface_hcsr04_uc at 17( 749) + 0 on 29;
+  architecture fsm_arch of interface_hcsr04_uc at 35( 1266) + 0 on 30;
+file . "interface_hcsr04.vhd" "a5e6402823640249f154ff7078dcd2b7c8fe6bbe" "20230919001313.057":
+  entity interface_hcsr04 at 1( 0) + 0 on 39;
+  architecture structural of interface_hcsr04 at 18( 446) + 0 on 40;
+file . "interface_hcsr04_tb.vhd" "bba00229ecbd81f8e7df076877aa219617030b0c" "20230918180747.773":
+  entity interface_hcsr04_tb at 17( 754) + 0 on 33;
+  architecture tb of interface_hcsr04_tb at 23( 841) + 0 on 34;
+file . "contador_bcd_3digitos.vhd" "1c45360284fb89565a7eb9331360d7caac4f56f2" "20230918225044.532":
+  entity contador_bcd_3digitos at 17( 739) + 0 on 37;
+  architecture comportamental of contador_bcd_3digitos at 33( 1177) + 0 on 38;
