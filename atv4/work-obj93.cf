@@ -1,0 +1,58 @@
+v 4
+file . "exp4_trena_uc.vhd" "d077f10754577253278c4a7b037c631edfda2a1a" "20231008220234.994":
+  entity exp4_trena_uc at 1( 0) + 0 on 53;
+  architecture arch of exp4_trena_uc at 22( 697) + 0 on 54;
+file . "exp4_trena.vhd" "07bb317ed504c60ae993a884c814f9b9912a144b" "20231008220215.885":
+  entity exp4_trena at 1( 0) + 0 on 49;
+  architecture structural of exp4_trena at 20( 557) + 0 on 50;
+file . "contador_cm/contador_cm.vhd" "554dd3d212453907769c1928384aa458463edaec" "20231008220141.475":
+  entity contador_cm at 1( 0) + 0 on 29;
+  architecture arch of contador_cm at 22( 467) + 0 on 30;
+file . "contador_cm/contador_cm_uc.vhd" "34c2a38e5292b9e2fd154059c3e915ea71554911" "20231008220141.474":
+  entity contador_cm_uc at 1( 0) + 0 on 27;
+  architecture fsm_arch of contador_cm_uc at 18( 442) + 0 on 28;
+file . "contador_cm/contador_cm_tb.vhd" "0f0c42d212f3beb399e49392112d7336c00fe8eb" "20231008220141.473":
+  entity contador_cm_tb at 17( 756) + 0 on 25;
+  architecture tb of contador_cm_tb at 23( 844) + 0 on 26;
+file . "common/contador_bcd_3digitos.vhd" "1c45360284fb89565a7eb9331360d7caac4f56f2" "20231008220057.257":
+  entity contador_bcd_3digitos at 17( 739) + 0 on 11;
+  architecture comportamental of contador_bcd_3digitos at 33( 1177) + 0 on 12;
+file . "common/contador_m.vhd" "29a70d42722d386c0aec57e8df600175a95d89f0" "20231008220057.257":
+  entity contador_m at 20( 809) + 0 on 13;
+  architecture contador_m_arch of contador_m at 39( 1243) + 0 on 14;
+file . "common/deslocador_n.vhd" "0d5a6023103b8c6d49875d2e8ba6802dd18d6440" "20231008220057.258":
+  entity deslocador_n at 16( 691) + 0 on 15;
+  architecture deslocador_n_arch of deslocador_n at 34( 1201) + 0 on 16;
+file . "common/edge_detector.vhd" "8141dd61bc940f8524a77d7f3263dcef578e73b0" "20231008220057.258":
+  entity edge_detector at 19( 839) + 0 on 17;
+  architecture behavioral of edge_detector at 30( 1069) + 0 on 18;
+file . "common/gerador_pulso.vhd" "0433b73162991673dee57cb03b7c8953f4893f6e" "20231008220057.258":
+  entity gerador_pulso at 18( 792) + 0 on 19;
+  architecture fsm_arch of gerador_pulso at 36( 1186) + 0 on 20;
+file . "common/hexa7seg.vhd" "b1a6c6e082a35c0dfdbf79f61832a4cfaa126e90" "20231008220057.259":
+  entity hexa7seg at 22( 1022) + 0 on 21;
+  architecture comportamental of hexa7seg at 32( 1222) + 0 on 22;
+file . "common/registrador_n.vhd" "2342a586e10123b28155d3ecb8f051ab4052f712" "20231008220057.259":
+  entity registrador_n at 33( 1413) + 0 on 23;
+  architecture comportamental of registrador_n at 49( 1785) + 0 on 24;
+file . "tx_serial/tx_serial_7O1_fd.vhd" "752feb0ea4723ce58fabc1eafae107ecc85ca580" "20231008220205.697":
+  entity tx_serial_7o1_fd at 19( 861) + 0 on 37;
+  architecture tx_serial_7o1_fd_arch of tx_serial_7o1_fd at 36( 1340) + 0 on 38;
+file . "tx_serial/tx_serial_7O1.vhd" "4b6a5a0aadffaae576ccf6ce7d5f671306187635" "20231008220205.698":
+  entity tx_serial_7o1 at 20( 900) + 0 on 39;
+  architecture tx_serial_7o1_arch of tx_serial_7o1 at 40( 1533) + 0 on 40;
+file . "tx_serial/tx_serial_uc.vhd" "9076a7ca573b1293ed38a042f059e6b3b984f978" "20231008220205.698":
+  entity tx_serial_uc at 17( 786) + 0 on 41;
+  architecture tx_serial_uc_arch of tx_serial_uc at 36( 1308) + 0 on 42;
+file . "interface_hcsr04/interface_hcsr04_df.vhd" "0f8e5d4f40cade43543f31a1d8d8178b47c8682b" "20231008220210.543":
+  entity interface_hcsr04_df at 1( 0) + 0 on 43;
+  architecture arch of interface_hcsr04_df at 21( 608) + 0 on 44;
+file . "interface_hcsr04/interface_hcsr04_uc.vhd" "c7cf38277ae40e6ce13b9325eef55375747ad7de" "20231008220210.543":
+  entity interface_hcsr04_uc at 17( 749) + 0 on 45;
+  architecture fsm_arch of interface_hcsr04_uc at 35( 1266) + 0 on 46;
+file . "interface_hcsr04/interface_hcsr04.vhd" "a5e6402823640249f154ff7078dcd2b7c8fe6bbe" "20231008220210.544":
+  entity interface_hcsr04 at 1( 0) + 0 on 47;
+  architecture structural of interface_hcsr04 at 18( 446) + 0 on 48;
+file . "exp4_trena_fd.vhd" "8d0af54fe29db8f462260c6665ad859c2f204e13" "20231008220229.520":
+  entity exp4_trena_fd at 1( 0) + 0 on 51;
+  architecture arch of exp4_trena_fd at 25( 802) + 0 on 52;
