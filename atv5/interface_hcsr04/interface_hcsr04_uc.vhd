@@ -18,7 +18,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 entity interface_hcsr04_uc is 
-    port (
+    port ( 
         clock      : in  std_logic;
         reset      : in  std_logic;
         medir      : in  std_logic;
