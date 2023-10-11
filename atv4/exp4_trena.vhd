@@ -5,7 +5,6 @@ entity exp4_trena is
     port (
          clock : in std_logic;
          reset : in std_logic;
-         mensurar : in std_logic;
          echo : in std_logic;
          trigger : out std_logic;
          saida_serial : out std_logic;
@@ -18,6 +17,21 @@ entity exp4_trena is
 end entity exp4_trena;
 
 architecture structural of exp4_trena is
+
+    component contador_m is
+        generic (
+            constant M : integer := 50;  
+            constant N : integer := 6 
+        );
+        port (
+            clock : in  std_logic;
+            zera  : in  std_logic;
+            conta : in  std_logic;
+            Q     : out std_logic_vector (N-1 downto 0);
+            fim   : out std_logic;
+            meio  : out std_logic
+        );
+    end component contador_m;
 
     component exp4_trena_uc is
       port (
@@ -74,7 +88,8 @@ architecture structural of exp4_trena is
     end component;
 
     signal s_medida0, s_medida1, s_medida2, s_estado : std_logic_vector(3 downto 0);
-    signal s_fim_transmissao, s_transmissao_pronto, s_fim_medida, s_avancar_digito, s_zera_transmissor, s_zera_contador, s_transmitir, s_medir, s_ed_mensurar : std_logic;
+    signal s_fim_transmissao, s_transmissao_pronto, s_fim_medida, s_avancar_digito, s_zera_transmissor, s_zera_contador, s_transmitir, s_medir : std_logic;
+    signal s_mensurar : std_logic;
 
 begin
 
@@ -82,7 +97,7 @@ begin
     port map (
          clock  => clock,
          reset  => reset,
-         mensurar  => s_ed_mensurar,
+         mensurar  => s_mensurar,
          fim_medida  => s_fim_medida,
          fim_transmissao  => s_fim_transmissao,
          transmissao_pronto    => s_transmissao_pronto,
@@ -115,11 +130,18 @@ begin
          medida2  => s_medida2
      );
 
-    ED : edge_detector
+    MENSURAR_CONT : contador_m
+    generic map(
+        M => 250000,
+        N => 18
+    )
     port map (
-        clock      => clock,
-        signal_in  => mensurar,
-        output     => s_ed_mensurar
+        clock => clock,
+        zera  => reset,
+        conta => '1',
+        Q     => open,
+        fim   => s_mensurar,
+        meio  => open
      );
 
     HEX0 : hexa7seg

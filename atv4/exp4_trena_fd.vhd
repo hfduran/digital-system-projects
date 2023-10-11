@@ -25,13 +25,14 @@ end entity;
 architecture arch of exp4_trena_fd is
     component interface_hcsr04 is
         port (
-             clock : in std_logic;
-             reset : in std_logic;
-             medir : in std_logic;
-             echo : in std_logic;
-             trigger : out std_logic;
-             medida : out std_logic_vector(11 downto 0);
-             pronto : out std_logic
+            clock     : in  std_logic;
+            reset     : in  std_logic;
+            medir     : in  std_logic;
+            echo      : in  std_logic;
+            trigger   : out std_logic;
+            medida    : out std_logic_vector(11 downto 0);
+            pronto    : out std_logic;
+            db_estado : out std_logic_vector(3 downto 0)
         );
     end component;
 
@@ -79,7 +80,8 @@ begin
          echo => echo,
          trigger => trigger,
          medida => s_medida,
-         pronto => fim_medida
+         pronto => fim_medida,
+         db_estado => open
      );
 
     TX : tx_serial_7O1
