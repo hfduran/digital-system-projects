@@ -1,0 +1,13 @@
+v 4
+file . "controle_servo.vhd" "b6f043dd3b269c588650036f538b2fa69a774d9c" "20231011214004.399":
+  entity controle_servo at 1( 0) + 0 on 17;
+  architecture estrutural of controle_servo at 14( 270) + 0 on 18;
+file . "controle_servo_tb.vhd" "e7ba92318eaf8f6a79b9c5b3234a9a4546b763f5" "20231011214004.397":
+  entity controle_servo_tb at 16( 634) + 0 on 15;
+  architecture tb of controle_servo_tb at 22( 719) + 0 on 16;
+file . "circuito_pwm.vhd" "aaf33165368eea9ad47464a68daa2e8fe5779f00" "20231011214004.395":
+  entity circuito_pwm at 24( 1177) + 0 on 13;
+  architecture rtl of circuito_pwm at 48( 1773) + 0 on 14;
+file . "circuito_pwm_tb.vhd" "b8e14888821b3b50338b906a8d5b2c5605951727" "20231011214004.388":
+  entity circuito_pwm_tb at 15( 628) + 0 on 11;
+  architecture tb of circuito_pwm_tb at 21( 711) + 0 on 12;

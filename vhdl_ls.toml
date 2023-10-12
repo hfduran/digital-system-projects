@@ -1,0 +1,32 @@
+# File names are either absolute or relative to the parent folder of the
+# vhdl_ls.toml file and supports glob-style patterns.
+
+[libraries]
+
+atv1.files = [
+  'atv1/**/*.vhd',
+]
+
+atv2.files = [
+  'atv2/**/*.vhd',
+]
+
+atv3.files = [
+  'atv3/**/*.vhd',
+]
+
+atv4.files = [
+  'atv4/**/*.vhd',
+]
+
+atv5.files = [
+  'atv5/**/*.vhd',
+]
+
+atv5-oracle.files = [
+  'atv5/**/*.vhd',
+]
+
+A5.files = [
+  'A5/**/*.vhd',
+]
