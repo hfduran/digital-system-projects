@@ -149,8 +149,8 @@ begin
 
     MEDIR_CONT : contador_m
     generic map(
-        M => 10000,
-        N => 14
+        M => 25000000,
+        N => 25
     )
     port map (
         clock => clock,

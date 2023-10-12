@@ -83,7 +83,7 @@ begin
     with Eatual select
         transmitir <= '1' when tx_distancia | tx_angulo, '0' when others;
     with Eatual select
-        zera_transmissor <= '1' when prox_digito_distancia, '0' when others;
+        zera_transmissor <= '1' when prox_digito_distancia | prox_digito_angulo, '0' when others;
     with Eatual select
         zera_cont_medir <= '1' when rotina, '0' when others;
     with Eatual select
