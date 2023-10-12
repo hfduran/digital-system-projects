@@ -31,6 +31,7 @@ architecture tb of exp4_trena_tb is
         clock         : in  std_logic;
         reset         : in  std_logic;
         echo          : in  std_logic;
+        liga          : in  std_logic;
         trigger       : out std_logic;
         saida_serial  : out std_logic;
         medida0       : out std_logic_vector (6 downto 0);
@@ -45,10 +46,10 @@ architecture tb of exp4_trena_tb is
   --   valores iniciais para fins de simulacao (GHDL ou ModelSim)
   signal clock_in         : std_logic := '0';
   signal reset_in         : std_logic := '0';
-  signal mensurar_in      : std_logic := '0';
   signal echo_in          : std_logic := '0';
   signal trigger_out      : std_logic := '0';
   signal saida_serial_out : std_logic := '1';
+  signal liga_in          : std_logic := '0';
   signal medida0_out      : std_logic_vector (6 downto 0) := "0000000";
   signal medida1_out      : std_logic_vector (6 downto 0) := "0000000";
   signal medida2_out      : std_logic_vector (6 downto 0) := "0000000";
@@ -87,6 +88,7 @@ begin
            clock         => clock_in,
            reset         => reset_in,
            echo          => echo_in,
+           liga         => liga_in,
            trigger       => trigger_out,
            saida_serial  => saida_serial_out,
            medida0       => medida0_out,
@@ -104,14 +106,16 @@ begin
     keep_simulating <= '1';
     
     ---- valores iniciais ----------------
-    mensurar_in <= '0';
     echo_in     <= '0';
+    liga_in     <= '0';
 
     ---- inicio: reset ----------------
     wait for 2*clockPeriod;
     reset_in <= '1'; 
     wait for 2*clockPeriod;
     reset_in <= '0';
+    wait for 7*clockPeriod;
+    liga_in <= '1';
 
     ---- loop pelos casos de teste
     for i in casos_teste'range loop
@@ -120,25 +124,23 @@ begin
             integer'image(casos_teste(i).tempo) & "us" severity note;
         larguraPulso <= casos_teste(i).tempo * 1 us; -- caso de teste "i"
 
-        -- 2) envia pulso medir
-        -- wait until falling_edge(clock_in);
-        -- mensurar_in <= '1';
-        -- wait for 5*clockPeriod;
-        -- mensurar_in <= '0';
-
         -- 2) espera por trigger
         -- wait for 2000*clockPeriod;
+        assert false report "Esperando o triggui..." severity note;
         wait until trigger_out = '1';
+        assert false report "foi" severity note;
      
         -- 3) espera por 400us (simula tempo entre trigger e echo)
         wait for 400 us;
      
         -- 4) gera pulso de echo (largura = larguraPulso)
+        assert false report "Esperando a largura do pulso..." severity note;
         echo_in <= '1';
         wait for larguraPulso;
         echo_in <= '0';
      
         -- 5) espera final da transmissão serial da medida
+        assert false report "Esperando o pronto..." severity note;
       	wait until pronto_out = '1';
         assert false report "Fim do caso " & integer'image(casos_teste(i).id) severity note;
 
