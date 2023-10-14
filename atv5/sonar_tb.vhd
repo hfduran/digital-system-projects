@@ -31,6 +31,7 @@ architecture tb of sonar_tb is
          reset : in std_logic;
          echo : in std_logic;
          liga : in std_logic;
+         entrada_serial: in std_logic;
          trigger : out std_logic;
          pwm : out std_logic;
          saida_serial : out std_logic;
@@ -48,6 +49,7 @@ architecture tb of sonar_tb is
   signal reset_in         : std_logic := '0';
   signal ligar_in         : std_logic := '0';
   signal echo_in          : std_logic := '0';
+  signal entrada_serial_in: std_logic := '1';
   signal trigger_out      : std_logic := '0';
   signal pwm_out          : std_logic := '0';
   signal saida_serial_out : std_logic := '1';
@@ -96,6 +98,7 @@ begin
             reset        => reset_in,
             liga        => ligar_in,
             echo         => echo_in,
+            entrada_serial => '1',
             trigger      => trigger_out,
             pwm          => pwm_out,
             saida_serial => saida_serial_out,

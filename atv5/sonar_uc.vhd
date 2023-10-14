@@ -9,8 +9,10 @@ entity sonar_uc is
          fim_transmissao    : in std_logic;
          transmissao_pronto : in std_logic;
          liga               : in std_logic;
+         atencao            : in std_logic;
          transmitir         : out std_logic;
          zera_transmissor   : out std_logic;
+         zera_rx            : out std_logic;
          zera_cont_digitos  : out std_logic;
          zera_cont_medir    : out std_logic;
          zera_cont_angulo   : out std_logic;
@@ -25,7 +27,7 @@ end entity;
 
 architecture arch of sonar_uc is
     type tipo_estado is (inicial, rotina, preparacao, espera_medida, tx_distancia,
-        tx_angulo, prox_digito_distancia, prox_digito_angulo, zera_digitos, final);
+        tx_angulo, prox_digito_distancia, prox_digito_angulo, zera_digitos, final, final_atencao);
     signal Eatual, Eprox: tipo_estado;
 begin
 
@@ -39,7 +41,7 @@ begin
         end if;
     end process;
 
-    process (clock, fim_medida, fim_transmissao, transmissao_pronto, liga) 
+    process (clock, fim_medida, fim_transmissao, transmissao_pronto, liga, atencao) 
     begin
       case Eatual is
         when inicial           =>   if liga = '1' then Eprox <= preparacao;
@@ -68,11 +70,18 @@ begin
                                 else                        Eprox <= tx_distancia;
                                 end if;
 
-        when prox_digito_distancia  =>  if transmissao_pronto='1' then Eprox <= final;
-                                    else Eprox <= tx_distancia;
-                                    end if;
+        when prox_digito_distancia  =>  if transmissao_pronto='1' then
+                                            if atencao='0' then Eprox <= final;
+                                            else Eprox <= final_atencao;
+                                            end if;
+                                        else Eprox <= tx_distancia;
+                                        end if;
 
         when final          =>  if liga = '1' then  Eprox <= rotina;
+                                else                Eprox <= inicial;
+                                end if;
+
+        when final_atencao  => if liga = '1' then  Eprox <= rotina;
                                 else                Eprox <= inicial;
                                 end if;
 
@@ -83,7 +92,9 @@ begin
     with Eatual select
         transmitir <= '1' when tx_distancia | tx_angulo, '0' when others;
     with Eatual select
-        zera_transmissor <= '1' when prox_digito_distancia | prox_digito_angulo, '0' when others;
+        zera_transmissor <= '1' when prox_digito_distancia | prox_digito_angulo | preparacao, '0' when others;
+    with Eatual select
+        zera_rx <= '1' when preparacao, '0' when others;
     with Eatual select
         zera_cont_medir <= '1' when rotina, '0' when others;
     with Eatual select
@@ -97,7 +108,7 @@ begin
     with Eatual select
         conta_angulo <= '1' when final, '0' when others;
     with Eatual select
-        pronto <= '1' when final, '0' when others;
+        pronto <= '1' when final | final_atencao, '0' when others;
     with Eatual select
         tx_step <= '1' when tx_distancia | prox_digito_distancia, '0' when others;
     with Eatual select

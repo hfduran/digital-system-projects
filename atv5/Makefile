@@ -30,13 +30,17 @@ init: force
 	# /usr/lib/ghdl/mcode/vhdl/ieee/v93/../../src/ieee/math_real.vhdl
 	# /usr/lib/ghdl/mcode/vhdl/ieee/v93/../../src/ieee/math_real-body.vhdl
 	$(GHDL) -a $(GHDLFLAGS) ./sonar_fd.vhd
+	$(GHDL) -a $(GHDLFLAGS) ./atencao_uc.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./common/hexa7seg.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./interface_hcsr04/interface_hcsr04.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./tx_serial/tx_serial_7O1.vhd
+	$(GHDL) -a $(GHDLFLAGS) ./rx_serial/rx_serial_7O1.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./common/contador_m.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./common/contadorg_updown_m.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./roms/rom_angulos_8x24.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./controle_servo/controle_servo.vhd
+	$(GHDL) -a $(GHDLFLAGS) ./common/mux_4x1_n.vhd
+	$(GHDL) -a $(GHDLFLAGS) ./common/comparador.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./interface_hcsr04/interface_hcsr04_df.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./interface_hcsr04/interface_hcsr04_uc.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./common/registrador_n.vhd
@@ -48,6 +52,8 @@ init: force
 	$(GHDL) -a $(GHDLFLAGS) ./tx_serial/tx_serial_7O1_fd.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./common/edge_detector.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./common/deslocador_n.vhd
+	$(GHDL) -a $(GHDLFLAGS) ./rx_serial/rx_serial_uc.vhd
+	$(GHDL) -a $(GHDLFLAGS) ./rx_serial/rx_serial_7O1_fd.vhd
 	$(GHDL) -a $(GHDLFLAGS) ./controle_servo/circuito_pwm.vhd
 
 force:

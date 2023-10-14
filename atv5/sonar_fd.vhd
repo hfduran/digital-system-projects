@@ -17,6 +17,10 @@ entity sonar_fd is
     zera_cont_angulo    : in std_logic;
     conta_angulo        : in std_logic;
     tx_step             : in std_logic; -- 0 for angle, 1 for distance
+    entrada_serial      : in std_logic;
+    zera_rx             : in std_logic;
+    atencao             : out std_logic;
+    voltar              : out std_logic;
     trigger             : out std_logic;
     saida_serial        : out std_logic;
     fim_medida          : out std_logic;
@@ -69,6 +73,16 @@ architecture arch of sonar_fd is
         );
     end component;
 
+    component comparador is
+        generic (
+          constant N : integer := 7
+        );
+        port (
+          a, b : in std_logic_vector(N-1 downto 0);
+          eq : out std_logic
+        );
+    end component;
+
     component controle_servo is
         port (
         clock : in std_logic;
@@ -116,13 +130,27 @@ architecture arch of sonar_fd is
         );
     end component;
 
+    component rx_serial_7O1 is
+        port (
+            clock               : in  std_logic;
+            reset               : in  std_logic;
+            dado_serial         : in  std_logic;
+            dados_ascii         : out std_logic_vector(6 downto 0);
+            paridade_recebida   : out std_logic;
+            pronto_rx           : out std_logic;
+            db_estado           : out std_logic_vector(3 downto 0);
+            db_dado_serial      : out std_logic
+        );
+    end component;
+
     type digitos_distancia is array (0 to 2) of std_logic_vector(6 downto 0);
 
-    signal s_zera_transmissor, s_zera_cont_digitos, s_medir : std_logic;
+    signal s_medir : std_logic;
     signal s_medida : std_logic_vector(11 downto 0);
     signal s_distancia_atual : digitos_distancia;
     signal s_digito_ascii : std_logic_vector(6 downto 0);
     signal s_digito_distancia, s_digito_angulo : std_logic_vector(6 downto 0);
+    signal s_char_recebido : std_logic_vector(6 downto 0);
     signal s_indice_digito : std_logic_vector(1 downto 0);
     signal s_selecao_angulo : std_logic_vector(2 downto 0);
     signal s_angulo_atual : std_logic_vector(23 downto 0);
@@ -144,18 +172,30 @@ begin
     TX : tx_serial_7O1
     port map (
          clock          => clock, 
-         reset          => s_zera_transmissor, 
+         reset          => zera_transmissor, 
          partida        => transmitir, 
          dados_ascii    => s_digito_ascii,
          saida_serial   => saida_serial, 
          pronto         => fim_transmissao
     );
 
+    RX : rx_serial_7O1
+    port map (
+        clock => clock,
+        reset => zera_rx,
+        dado_serial => entrada_serial,
+        dados_ascii => s_char_recebido,
+        paridade_recebida => open,
+        pronto_rx => open,
+        db_estado => open,
+        db_dado_serial => open
+    );
+
     CONTA_DIG : contador_m
     generic map (M => 4, N => 2)
     port map (
         clock    => clock,
-        zera     => s_zera_cont_digitos,
+        zera     => zera_cont_digitos,
         conta    => conta_digito,
         Q        => s_indice_digito,
         fim      => transmissao_pronto,
@@ -205,9 +245,6 @@ begin
         controle => pwm
     );
 
-    s_zera_transmissor <= zera_transmissor or reset;
-    s_zera_cont_digitos <= zera_cont_digitos or reset;
-
     s_distancia_atual(0) <= "011" & s_medida(3 downto 0);
     s_distancia_atual(1) <= "011" & s_medida(7 downto 4);
     s_distancia_atual(2) <= "011" & s_medida(11 downto 8);
@@ -236,6 +273,26 @@ begin
         D0 => s_angulo_atual(6 downto 0),
         SEL => s_indice_digito,
         MUX_OUT => s_digito_angulo
+    );
+
+    ATENCAO_COMP : comparador
+    generic map(
+        N => 7
+    )
+    port map(
+        a => s_char_recebido,
+        b => "1100001",
+        eq => atencao
+    );
+
+    VOLTAR_COMP : comparador
+    generic map(
+        N => 7
+    )
+    port map(
+        a => s_char_recebido,
+        b => "1110110",
+        eq => voltar
     );
     
     with tx_step select
