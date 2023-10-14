@@ -101,6 +101,21 @@ architecture arch of sonar_fd is
         ); 
     end component;
 
+
+    component mux_4x1_n is
+        generic (
+            constant BITS: integer := 4
+        );
+        port( 
+            D3      : in  std_logic_vector (BITS-1 downto 0);
+            D2      : in  std_logic_vector (BITS-1 downto 0);
+            D1      : in  std_logic_vector (BITS-1 downto 0);
+            D0      : in  std_logic_vector (BITS-1 downto 0);
+            SEL     : in  std_logic_vector (1 downto 0);
+            MUX_OUT : out std_logic_vector (BITS-1 downto 0)
+        );
+    end component;
+
     type digitos_distancia is array (0 to 2) of std_logic_vector(6 downto 0);
 
     signal s_zera_transmissor, s_zera_cont_digitos, s_medir : std_logic;
@@ -149,8 +164,8 @@ begin
 
     MEDIR_CONT : contador_m
     generic map(
-        M => 25000000,
-        N => 25
+        M => 10000,
+        N => 18
     )
     port map (
         clock => clock,
@@ -197,17 +212,31 @@ begin
     s_distancia_atual(1) <= "011" & s_medida(7 downto 4);
     s_distancia_atual(2) <= "011" & s_medida(11 downto 8);
 
-    with s_indice_digito select
-        s_digito_distancia <= s_distancia_atual(0) when "00",
-                           s_distancia_atual(1) when "01",
-                           s_distancia_atual(2) when "10",
-                           "0100011" when others;
+    MUX_DIST: mux_4x1_n
+    generic map(
+        BITS => 7
+    )
+    port map (
+        D3 => "0101100",
+        D2 => s_distancia_atual(2),
+        D1 => s_distancia_atual(1),
+        D0 => s_distancia_atual(0),
+        SEL => s_indice_digito,
+        MUX_OUT => s_digito_distancia
+    );
 
-    with s_indice_digito select
-        s_digito_angulo <= s_angulo_atual(6 downto 0) when "00",
-                           s_angulo_atual(14 downto 8) when "01",
-                           s_angulo_atual(22 downto 16) when "10",
-                           "0100011" when others;
+    MUX_ANG: mux_4x1_n
+    generic map(
+        BITS => 7
+    )
+    port map (
+        D3 => "0100011",
+        D2 => s_angulo_atual(22 downto 16),
+        D1 => s_angulo_atual(14 downto 8),
+        D0 => s_angulo_atual(6 downto 0),
+        SEL => s_indice_digito,
+        MUX_OUT => s_digito_angulo
+    );
     
     with mode select
         s_digito_ascii <= s_digito_angulo when '0',
