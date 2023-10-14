@@ -103,8 +103,6 @@ begin
            pronto_rx         => pronto_out,
            --tem_dado          => temdado_out,
            --paridade_ok       => paridade_ok_out,
-           dado_recebido0    => open,
-           dado_recebido1    => open,
            db_estado         => open
        );
 

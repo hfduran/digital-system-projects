@@ -31,7 +31,8 @@ entity rx_serial_7O1 is
         dado_recebido1      : out std_logic_vector(6 downto 0);
         paridade_recebida   : out std_logic;
         pronto_rx           : out std_logic;
-        db_estado           : out std_logic_vector(6 downto 0)
+        db_estado           : out std_logic_vector(6 downto 0);
+        db_dado_serial      : out std_logic
     );
 end entity;
 
@@ -100,11 +101,13 @@ architecture estrutural of rx_serial_7O1 is
     signal s_estado : std_logic_vector(3 downto 0);
     signal s_dados_ascii : std_logic_vector(6 downto 0);
     signal s_dado_recebido0, s_dado_recebido1 : std_logic_vector(3 downto 0);
+    signal s_dado_serial: std_logic;
 
 begin
 
     -- sinais reset e partida mapeados na GPIO (ativos em alto)
     s_reset   <= reset;
+    s_dado_serial <= dado_serial;
 
     -- unidade de controle
     
@@ -114,7 +117,7 @@ begin
                reset     => s_reset,
                tick      => s_tick,
                fim       => s_fim,
-               dado      => dado_serial,
+               dado      => s_dado_serial,
                zera      => s_zera,
                limpa     => s_limpa,
                conta     => s_conta,
@@ -137,7 +140,7 @@ begin
                limpa            => s_limpa,
                desloca          => s_desloca,
                registra         => s_registra,
-               entrada_serial   => dado_serial,
+               entrada_serial   => s_dado_serial,
                dados_ascii      => s_dados_ascii,
                paridade_recebida=> paridade_recebida,
                fim              => s_fim
@@ -184,5 +187,7 @@ begin
 
     s_dado_recebido0 <= s_dados_ascii(3 downto 0);
     s_dado_recebido1 <= '0' & s_dados_ascii(6 downto 4);
+
+    db_dado_serial <= s_dado_serial;
 
 end architecture;

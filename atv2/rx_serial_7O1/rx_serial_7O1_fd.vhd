@@ -121,11 +121,10 @@ begin
             clock  => clock, 
             clear  => reset, 
             enable => registra, 
-            D      => s_saida_desloc(8 downto 2), 
+            D      => s_saida_desloc(7 downto 1), 
             Q      => dados_ascii
         );
 
-    paridade_recebida <= s_saida_desloc(1);
+    paridade_recebida <= s_saida_desloc(8);
     
 end architecture;
-
