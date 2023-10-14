@@ -17,7 +17,7 @@ entity sonar_uc is
          conta_digito       : out std_logic;
          conta_medir        : out std_logic;
          conta_angulo       : out std_logic;
-         mode               : out std_logic;
+         tx_step            : out std_logic;
          pronto             : out std_logic;
          db_estado          : out std_logic_vector(3 downto 0)
      );
@@ -99,7 +99,7 @@ begin
     with Eatual select
         pronto <= '1' when final, '0' when others;
     with Eatual select
-        mode <= '1' when tx_distancia | prox_digito_distancia, '0' when others;
+        tx_step <= '1' when tx_distancia | prox_digito_distancia, '0' when others;
     with Eatual select
         db_estado <= "0000" when inicial,
                     "0001" when espera_medida,

@@ -36,7 +36,7 @@ architecture structural of sonar is
              conta_digito       : out std_logic;
              conta_medir        : out std_logic;
              conta_angulo       : out std_logic;
-             mode               : out std_logic;
+             tx_step            : out std_logic;
              pronto             : out std_logic;
              db_estado          : out std_logic_vector(3 downto 0)
          );
@@ -55,7 +55,7 @@ architecture structural of sonar is
           conta_medir         : in std_logic;
           zera_cont_angulo    : in std_logic;
           conta_angulo        : in std_logic;
-          mode                : in std_logic; -- 0 for angle, 1 for distance
+          tx_step             : in std_logic; -- 0 for angle, 1 for distance
           trigger             : out std_logic;
           saida_serial        : out std_logic;
           fim_medida          : out std_logic;
@@ -85,7 +85,7 @@ architecture structural of sonar is
 
     signal s_medida0, s_medida1, s_medida2, s_estado : std_logic_vector(3 downto 0);
     signal s_fim_transmissao, s_transmissao_pronto, s_fim_medida, s_conta_digito, s_zera_transmissor,
-    s_zera_cont_digitos, s_conta_medir, s_zera_cont_medir, s_transmitir, s_medir, s_mode,
+    s_zera_cont_digitos, s_conta_medir, s_zera_cont_medir, s_transmitir, s_medir, s_tx_step,
     s_conta_angulo, s_zera_cont_angulo: std_logic;
 
 begin
@@ -99,7 +99,7 @@ begin
          liga               => liga,
          zera_cont_angulo   => s_zera_cont_angulo,
          conta_angulo       => s_conta_angulo,
-         mode               => s_mode,
+         tx_step            => s_tx_step,
          transmissao_pronto => s_transmissao_pronto,
          transmitir         => s_transmitir,
          zera_transmissor   => s_zera_transmissor,
@@ -119,7 +119,7 @@ begin
          echo               => echo,
          zera_cont_angulo   => s_zera_cont_angulo,
          conta_angulo       => s_conta_angulo,
-         mode               => s_mode,
+         tx_step            => s_tx_step,
          zera_cont_digitos  => s_zera_cont_digitos,
          zera_transmissor   => s_zera_transmissor,
          conta_digito       => s_conta_digito,

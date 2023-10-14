@@ -16,7 +16,7 @@ entity sonar_fd is
     conta_medir         : in std_logic;
     zera_cont_angulo    : in std_logic;
     conta_angulo        : in std_logic;
-    mode                : in std_logic; -- 0 for angle, 1 for distance
+    tx_step             : in std_logic; -- 0 for angle, 1 for distance
     trigger             : out std_logic;
     saida_serial        : out std_logic;
     fim_medida          : out std_logic;
@@ -238,7 +238,7 @@ begin
         MUX_OUT => s_digito_angulo
     );
     
-    with mode select
+    with tx_step select
         s_digito_ascii <= s_digito_angulo when '0',
                           s_digito_distancia when others;
 
