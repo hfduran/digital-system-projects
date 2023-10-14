@@ -15,7 +15,8 @@ entity sonar is
          medida0 : out std_logic_vector (6 downto 0);
          medida1 : out std_logic_vector (6 downto 0);
          medida2 : out std_logic_vector (6 downto 0);
-         db_estado : out std_logic_vector (6 downto 0)
+         db_estado : out std_logic_vector (6 downto 0);
+         db_modo : out std_logic
      );
 end entity sonar;
 
@@ -187,5 +188,7 @@ begin
         hexa => s_estado,
         sseg => db_estado
      );
+
+    db_modo <= s_atencao;
 
 end architecture;
