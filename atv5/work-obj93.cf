@@ -1,103 +1,103 @@
 v 4
-file . "./rx_serial/rx_serial_7O1.vhd" "2aa9d5073c964d12aff96e6df1319ea69bc90c49" "20231014233920.026":
-  entity rx_serial_7o1 at 21( 956) + 0 on 195;
-  architecture estrutural of rx_serial_7o1 at 38( 1495) + 0 on 196;
-file . "./rx_serial/rx_serial_7O1_fd.vhd" "af338582cca6eb6642d93a50c11bb6a44c9478c8" "20231014233920.032":
-  entity rx_serial_7o1_fd at 19( 861) + 0 on 197;
-  architecture rx_serial_7o1_fd_arch of rx_serial_7o1_fd at 39( 1542) + 0 on 198;
-file . "./atencao_uc.vhd" "c33b70a7c36201b66df3c56c0d3bdb471e0346cf" "20231014233919.962":
-  entity atencao_uc at 1( 0) + 0 on 179;
-  architecture arch of atencao_uc at 11( 167) + 0 on 180;
-file . "./common/mux_4x1_n.vhd" "59ccee895c98129247f31cdabab07622c02f1387" "20231014233920.137":
-  entity mux_4x1_n at 19( 798) + 0 on 227;
-  architecture arch_mux_4x1_n of mux_4x1_n at 36( 1319) + 0 on 228;
-file . "./common/contador_m.vhd" "29a70d42722d386c0aec57e8df600175a95d89f0" "20231014233920.123":
-  entity contador_m at 20( 809) + 0 on 223;
-  architecture contador_m_arch of contador_m at 39( 1243) + 0 on 224;
-file . "./common/hexa7seg.vhd" "b1a6c6e082a35c0dfdbf79f61832a4cfaa126e90" "20231014233920.109":
-  entity hexa7seg at 22( 1022) + 0 on 219;
-  architecture comportamental of hexa7seg at 32( 1222) + 0 on 220;
-file . "./common/registrador_n.vhd" "2342a586e10123b28155d3ecb8f051ab4052f712" "20231014233920.089":
-  entity registrador_n at 33( 1413) + 0 on 213;
-  architecture comportamental of registrador_n at 49( 1785) + 0 on 214;
-file . "./common/mux_8x1_n.vhd" "e5d2c2d7b7f7b886317a0e2c9561db691e3ea54a" "20231014233920.074":
-  entity mux_8x1_n at 17( 783) + 0 on 209;
-  architecture behav of mux_8x1_n at 38( 1521) + 0 on 210;
-file . "./sonar_uc.vhd" "7b217a63cf99e5f0e637ff0af9d24fd708cc7b99" "20231014233920.046":
-  entity sonar_uc at 1( 0) + 0 on 201;
-  architecture arch of sonar_uc at 28( 961) + 0 on 202;
-file . "./roms/rom_angulos_8x24.vhd" "5b0c59686a15e2d19f123a8d2bbdfaa49e8fb121" "20231014233920.008":
-  entity rom_angulos_8x24 at 18( 872) + 0 on 191;
-  architecture rom_arch of rom_angulos_8x24 at 29( 1118) + 0 on 192;
-file . "./controle_servo/controle_servo_tb.vhd" "e7ba92318eaf8f6a79b9c5b3234a9a4546b763f5" "20231014233919.994":
-  entity controle_servo_tb at 16( 634) + 0 on 187;
-  architecture tb of controle_servo_tb at 22( 719) + 0 on 188;
-file . "./controle_servo/circuito_pwm.vhd" "aaf33165368eea9ad47464a68daa2e8fe5779f00" "20231014233919.980":
-  entity circuito_pwm at 24( 1177) + 0 on 183;
-  architecture rtl of circuito_pwm at 48( 1773) + 0 on 184;
-file . "./interface_hcsr04/interface_hcsr04_uc.vhd" "c7cf38277ae40e6ce13b9325eef55375747ad7de" "20231014233919.956":
-  entity interface_hcsr04_uc at 17( 749) + 0 on 177;
-  architecture fsm_arch of interface_hcsr04_uc at 35( 1266) + 0 on 178;
-file . "./interface_hcsr04/contador_cm/contador_cm.vhd" "554dd3d212453907769c1928384aa458463edaec" "20231014233919.942":
-  entity contador_cm at 1( 0) + 0 on 173;
-  architecture arch of contador_cm at 22( 467) + 0 on 174;
-file . "./interface_hcsr04/interface_hcsr04_df.vhd" "0f8e5d4f40cade43543f31a1d8d8178b47c8682b" "20231014233919.927":
-  entity interface_hcsr04_df at 1( 0) + 0 on 169;
-  architecture arch of interface_hcsr04_df at 21( 608) + 0 on 170;
-file . "./tx_serial/tx_serial_7O1.vhd" "4b6a5a0aadffaae576ccf6ce7d5f671306187635" "20231014233919.911":
-  entity tx_serial_7o1 at 20( 900) + 0 on 165;
-  architecture tx_serial_7o1_arch of tx_serial_7o1 at 40( 1533) + 0 on 166;
-file . "./tx_serial/tx_serial_uc.vhd" "9076a7ca573b1293ed38a042f059e6b3b984f978" "20231014233919.896":
-  entity tx_serial_uc at 17( 786) + 0 on 161;
-  architecture tx_serial_uc_arch of tx_serial_uc at 36( 1308) + 0 on 162;
-file . "./tx_serial/tx_serial_7O1_fd.vhd" "752feb0ea4723ce58fabc1eafae107ecc85ca580" "20231014233919.902":
-  entity tx_serial_7o1_fd at 19( 861) + 0 on 163;
-  architecture tx_serial_7o1_fd_arch of tx_serial_7o1_fd at 36( 1340) + 0 on 164;
-file . "./interface_hcsr04/interface_hcsr04.vhd" "41ea09400edc6593e890a35bdcd3d2b58abff53d" "20231014233919.919":
-  entity interface_hcsr04 at 1( 0) + 0 on 167;
-  architecture structural of interface_hcsr04 at 18( 446) + 0 on 168;
-file . "./interface_hcsr04/contador_cm/contador_cm_tb.vhd" "0f0c42d212f3beb399e49392112d7336c00fe8eb" "20231014233919.934":
-  entity contador_cm_tb at 17( 756) + 0 on 171;
-  architecture tb of contador_cm_tb at 23( 844) + 0 on 172;
-file . "./interface_hcsr04/contador_cm/contador_cm_uc.vhd" "34c2a38e5292b9e2fd154059c3e915ea71554911" "20231014233919.950":
-  entity contador_cm_uc at 1( 0) + 0 on 175;
-  architecture fsm_arch of contador_cm_uc at 18( 442) + 0 on 176;
-file . "./sonar_fd.vhd" "786f81bbd6ba82e9748cc2cd5054236bdaca7cbc" "20231014233919.972":
-  entity sonar_fd at 1( 0) + 0 on 181;
-  architecture arch of sonar_fd at 36( 1241) + 0 on 182;
-file . "./controle_servo/controle_servo.vhd" "2f0358306fcf7e251d3848bf99fd2239edd43c96" "20231014233919.988":
-  entity controle_servo at 1( 0) + 0 on 185;
-  architecture estrutural of controle_servo at 14( 270) + 0 on 186;
-file . "./controle_servo/circuito_pwm_tb.vhd" "b8e14888821b3b50338b906a8d5b2c5605951727" "20231014233920.000":
-  entity circuito_pwm_tb at 15( 628) + 0 on 189;
-  architecture tb of circuito_pwm_tb at 21( 711) + 0 on 190;
-file . "./rx_serial/rx_serial_uc.vhd" "38e0b841100cbb92c93382880548fd098b9e7142" "20231014233920.039":
-  entity rx_serial_uc at 17( 786) + 0 on 199;
-  architecture rx_serial_uc_arch of rx_serial_uc at 38( 1380) + 0 on 200;
-file . "./sonar_tb.vhd" "1247eda22ca5a499715e41d8dafd53c3fb67042c" "20231015153449.534":
-  entity sonar_tb at 19( 834) + 0 on 235;
-  architecture tb of sonar_tb at 25( 910) + 0 on 236;
-file . "./common/gerador_pulso.vhd" "0433b73162991673dee57cb03b7c8953f4893f6e" "20231014233920.068":
-  entity gerador_pulso at 18( 792) + 0 on 207;
-  architecture fsm_arch of gerador_pulso at 36( 1186) + 0 on 208;
-file . "./common/contadorg_updown_m.vhd" "15239632dd3881822ffe1cb53bcb4aa82817adc9" "20231014233920.083":
-  entity contadorg_updown_m at 23( 1029) + 0 on 211;
-  architecture comportamental of contadorg_updown_m at 44( 1585) + 0 on 212;
-file . "./common/deslocador_n.vhd" "0d5a6023103b8c6d49875d2e8ba6802dd18d6440" "20231014233920.103":
-  entity deslocador_n at 16( 691) + 0 on 217;
-  architecture deslocador_n_arch of deslocador_n at 34( 1201) + 0 on 218;
-file . "./common/edge_detector.vhd" "8141dd61bc940f8524a77d7f3263dcef578e73b0" "20231014233920.115":
-  entity edge_detector at 19( 839) + 0 on 221;
-  architecture behavioral of edge_detector at 30( 1069) + 0 on 222;
-file . "./common/contador_bcd_3digitos.vhd" "1c45360284fb89565a7eb9331360d7caac4f56f2" "20231014233920.131":
-  entity contador_bcd_3digitos at 17( 739) + 0 on 225;
-  architecture comportamental of contador_bcd_3digitos at 33( 1177) + 0 on 226;
-file . "./common/comparador.vhd" "8627dba03f3e37d785e2116a25df775c99d3baed" "20231014233920.097":
-  entity comparador at 1( 0) + 0 on 215;
-  architecture arch of comparador at 15( 234) + 0 on 216;
+file . "sonar.vhd" "76602f98f1edd315a54b98f52afe0f0c6405afed" "20231015161308.129":
+  entity sonar at 1( 0) + 0 on 239;
+  architecture structural of sonar at 23( 651) + 0 on 240;
 file . "./rx_serial/rx_serial_7O1_tb.vhd" "0f8559ff119d7089d2d3b974c3906c76e50a5d82" "20231014233920.017":
   entity rx_serial_tb at 19( 900) + 0 on 193;
   architecture tb of rx_serial_tb at 26( 1013) + 0 on 194;
-file . "sonar.vhd" "1e757dd005038697fcc7637fc2f64477cb351731" "20231015145826.878":
-  entity sonar at 1( 0) + 0 on 229;
-  architecture structural of sonar at 23( 651) + 0 on 230;
+file . "./common/comparador.vhd" "8627dba03f3e37d785e2116a25df775c99d3baed" "20231014233920.097":
+  entity comparador at 1( 0) + 0 on 215;
+  architecture arch of comparador at 15( 234) + 0 on 216;
+file . "./common/contador_bcd_3digitos.vhd" "1c45360284fb89565a7eb9331360d7caac4f56f2" "20231014233920.131":
+  entity contador_bcd_3digitos at 17( 739) + 0 on 225;
+  architecture comportamental of contador_bcd_3digitos at 33( 1177) + 0 on 226;
+file . "./common/edge_detector.vhd" "8141dd61bc940f8524a77d7f3263dcef578e73b0" "20231014233920.115":
+  entity edge_detector at 19( 839) + 0 on 221;
+  architecture behavioral of edge_detector at 30( 1069) + 0 on 222;
+file . "./common/deslocador_n.vhd" "0d5a6023103b8c6d49875d2e8ba6802dd18d6440" "20231014233920.103":
+  entity deslocador_n at 16( 691) + 0 on 217;
+  architecture deslocador_n_arch of deslocador_n at 34( 1201) + 0 on 218;
+file . "./common/contadorg_updown_m.vhd" "15239632dd3881822ffe1cb53bcb4aa82817adc9" "20231014233920.083":
+  entity contadorg_updown_m at 23( 1029) + 0 on 211;
+  architecture comportamental of contadorg_updown_m at 44( 1585) + 0 on 212;
+file . "./common/gerador_pulso.vhd" "0433b73162991673dee57cb03b7c8953f4893f6e" "20231014233920.068":
+  entity gerador_pulso at 18( 792) + 0 on 207;
+  architecture fsm_arch of gerador_pulso at 36( 1186) + 0 on 208;
+file . "./sonar_tb.vhd" "dd9b1166cf1ed8905d1ca7cca3d39f2a3a04eea2" "20231015161337.459":
+  entity sonar_tb at 19( 834) + 0 on 245;
+  architecture tb of sonar_tb at 25( 910) + 0 on 246;
+file . "./rx_serial/rx_serial_uc.vhd" "38e0b841100cbb92c93382880548fd098b9e7142" "20231014233920.039":
+  entity rx_serial_uc at 17( 786) + 0 on 199;
+  architecture rx_serial_uc_arch of rx_serial_uc at 38( 1380) + 0 on 200;
+file . "./controle_servo/circuito_pwm_tb.vhd" "b8e14888821b3b50338b906a8d5b2c5605951727" "20231014233920.000":
+  entity circuito_pwm_tb at 15( 628) + 0 on 189;
+  architecture tb of circuito_pwm_tb at 21( 711) + 0 on 190;
+file . "./controle_servo/controle_servo.vhd" "2f0358306fcf7e251d3848bf99fd2239edd43c96" "20231014233919.988":
+  entity controle_servo at 1( 0) + 0 on 185;
+  architecture estrutural of controle_servo at 14( 270) + 0 on 186;
+file . "./sonar_fd.vhd" "786f81bbd6ba82e9748cc2cd5054236bdaca7cbc" "20231014233919.972":
+  entity sonar_fd at 1( 0) + 0 on 181;
+  architecture arch of sonar_fd at 36( 1241) + 0 on 182;
+file . "./interface_hcsr04/contador_cm/contador_cm_uc.vhd" "34c2a38e5292b9e2fd154059c3e915ea71554911" "20231014233919.950":
+  entity contador_cm_uc at 1( 0) + 0 on 175;
+  architecture fsm_arch of contador_cm_uc at 18( 442) + 0 on 176;
+file . "./interface_hcsr04/contador_cm/contador_cm_tb.vhd" "0f0c42d212f3beb399e49392112d7336c00fe8eb" "20231014233919.934":
+  entity contador_cm_tb at 17( 756) + 0 on 171;
+  architecture tb of contador_cm_tb at 23( 844) + 0 on 172;
+file . "./interface_hcsr04/interface_hcsr04.vhd" "41ea09400edc6593e890a35bdcd3d2b58abff53d" "20231014233919.919":
+  entity interface_hcsr04 at 1( 0) + 0 on 167;
+  architecture structural of interface_hcsr04 at 18( 446) + 0 on 168;
+file . "./tx_serial/tx_serial_7O1_fd.vhd" "752feb0ea4723ce58fabc1eafae107ecc85ca580" "20231014233919.902":
+  entity tx_serial_7o1_fd at 19( 861) + 0 on 163;
+  architecture tx_serial_7o1_fd_arch of tx_serial_7o1_fd at 36( 1340) + 0 on 164;
+file . "./tx_serial/tx_serial_uc.vhd" "9076a7ca573b1293ed38a042f059e6b3b984f978" "20231014233919.896":
+  entity tx_serial_uc at 17( 786) + 0 on 161;
+  architecture tx_serial_uc_arch of tx_serial_uc at 36( 1308) + 0 on 162;
+file . "./tx_serial/tx_serial_7O1.vhd" "4b6a5a0aadffaae576ccf6ce7d5f671306187635" "20231014233919.911":
+  entity tx_serial_7o1 at 20( 900) + 0 on 165;
+  architecture tx_serial_7o1_arch of tx_serial_7o1 at 40( 1533) + 0 on 166;
+file . "./interface_hcsr04/interface_hcsr04_df.vhd" "0f8e5d4f40cade43543f31a1d8d8178b47c8682b" "20231014233919.927":
+  entity interface_hcsr04_df at 1( 0) + 0 on 169;
+  architecture arch of interface_hcsr04_df at 21( 608) + 0 on 170;
+file . "./interface_hcsr04/contador_cm/contador_cm.vhd" "554dd3d212453907769c1928384aa458463edaec" "20231014233919.942":
+  entity contador_cm at 1( 0) + 0 on 173;
+  architecture arch of contador_cm at 22( 467) + 0 on 174;
+file . "./interface_hcsr04/interface_hcsr04_uc.vhd" "c7cf38277ae40e6ce13b9325eef55375747ad7de" "20231014233919.956":
+  entity interface_hcsr04_uc at 17( 749) + 0 on 177;
+  architecture fsm_arch of interface_hcsr04_uc at 35( 1266) + 0 on 178;
+file . "./controle_servo/circuito_pwm.vhd" "aaf33165368eea9ad47464a68daa2e8fe5779f00" "20231014233919.980":
+  entity circuito_pwm at 24( 1177) + 0 on 183;
+  architecture rtl of circuito_pwm at 48( 1773) + 0 on 184;
+file . "./controle_servo/controle_servo_tb.vhd" "e7ba92318eaf8f6a79b9c5b3234a9a4546b763f5" "20231014233919.994":
+  entity controle_servo_tb at 16( 634) + 0 on 187;
+  architecture tb of controle_servo_tb at 22( 719) + 0 on 188;
+file . "./roms/rom_angulos_8x24.vhd" "5b0c59686a15e2d19f123a8d2bbdfaa49e8fb121" "20231014233920.008":
+  entity rom_angulos_8x24 at 18( 872) + 0 on 191;
+  architecture rom_arch of rom_angulos_8x24 at 29( 1118) + 0 on 192;
+file . "./sonar_uc.vhd" "2a6db64de7a04641c76c3688da70ba7362b1acb9" "20231015161308.129":
+  entity sonar_uc at 1( 0) + 0 on 241;
+  architecture arch of sonar_uc at 28( 961) + 0 on 242;
+file . "./common/mux_8x1_n.vhd" "e5d2c2d7b7f7b886317a0e2c9561db691e3ea54a" "20231014233920.074":
+  entity mux_8x1_n at 17( 783) + 0 on 209;
+  architecture behav of mux_8x1_n at 38( 1521) + 0 on 210;
+file . "./common/registrador_n.vhd" "2342a586e10123b28155d3ecb8f051ab4052f712" "20231014233920.089":
+  entity registrador_n at 33( 1413) + 0 on 213;
+  architecture comportamental of registrador_n at 49( 1785) + 0 on 214;
+file . "./common/hexa7seg.vhd" "b1a6c6e082a35c0dfdbf79f61832a4cfaa126e90" "20231014233920.109":
+  entity hexa7seg at 22( 1022) + 0 on 219;
+  architecture comportamental of hexa7seg at 32( 1222) + 0 on 220;
+file . "./common/contador_m.vhd" "29a70d42722d386c0aec57e8df600175a95d89f0" "20231014233920.123":
+  entity contador_m at 20( 809) + 0 on 223;
+  architecture contador_m_arch of contador_m at 39( 1243) + 0 on 224;
+file . "./common/mux_4x1_n.vhd" "59ccee895c98129247f31cdabab07622c02f1387" "20231014233920.137":
+  entity mux_4x1_n at 19( 798) + 0 on 227;
+  architecture arch_mux_4x1_n of mux_4x1_n at 36( 1319) + 0 on 228;
+file . "./atencao_uc.vhd" "6be41601760bd5f75a413621c9ae2caa76557106" "20231015161308.129":
+  entity atencao_uc at 1( 0) + 0 on 243;
+  architecture arch of atencao_uc at 11( 185) + 0 on 244;
+file . "./rx_serial/rx_serial_7O1_fd.vhd" "af338582cca6eb6642d93a50c11bb6a44c9478c8" "20231014233920.032":
+  entity rx_serial_7o1_fd at 19( 861) + 0 on 197;
+  architecture rx_serial_7o1_fd_arch of rx_serial_7o1_fd at 39( 1542) + 0 on 198;
+file . "./rx_serial/rx_serial_7O1.vhd" "2aa9d5073c964d12aff96e6df1319ea69bc90c49" "20231014233920.026":
+  entity rx_serial_7o1 at 21( 956) + 0 on 195;
+  architecture estrutural of rx_serial_7o1 at 38( 1495) + 0 on 196;

@@ -39,7 +39,8 @@ architecture tb of sonar_tb is
          medida0 : out std_logic_vector (6 downto 0);
          medida1 : out std_logic_vector (6 downto 0);
          medida2 : out std_logic_vector (6 downto 0);
-         db_estado : out std_logic_vector (6 downto 0)
+         db_estado : out std_logic_vector (6 downto 0);
+         db_modo : out std_logic
      );
   end component;
   
@@ -59,6 +60,7 @@ architecture tb of sonar_tb is
 
   -- Configurações do clock
   constant clockPeriod   : time      := 20 ns; -- clock de 50MHz
+  constant bitPeriod   : time := 434*clockPeriod; -- 434 clocks por bit (115.200 bauds)
   signal keep_simulating : std_logic := '0';   -- delimita o tempo de geração do clock
   
   -- Array de posicoes de teste
@@ -85,6 +87,27 @@ architecture tb of sonar_tb is
 
   signal larguraPulso: time := 1 ns;
 
+  procedure UART_WRITE_BYTE (
+      Data_In : in  std_logic_vector(7 downto 0);
+      signal Serial_Out : out std_logic ) is
+  begin
+
+      -- envia Start Bit
+      Serial_Out <= '0';
+      wait for bitPeriod;
+
+      -- envia 8 bits seriais
+      for ii in 0 to 7 loop
+          Serial_Out <= Data_In(ii);
+          wait for bitPeriod;
+      end loop;  -- loop ii
+
+      -- envia 2 Stop Bits
+      Serial_Out <= '1';
+      wait for 2*bitPeriod;
+
+  end UART_WRITE_BYTE;
+
 begin
   -- Gerador de clock: executa enquanto 'keep_simulating = 1', com o período
   -- especificado. Quando keep_simulating=0, clock é interrompido, bem como a 
@@ -98,7 +121,7 @@ begin
             reset        => reset_in,
             liga        => ligar_in,
             echo         => echo_in,
-            entrada_serial => '1',
+            entrada_serial => entrada_serial_in,
             trigger      => trigger_out,
             pwm          => pwm_out,
             saida_serial => saida_serial_out,
@@ -159,13 +182,23 @@ begin
         -- 5) espera sinal fim (indica final da medida de uma posicao do sonar)
         wait until fim_posicao_out = '1';
 
-        if (i = 2) then
+        if (i = 1) then
           assert false report "desligando...." severity note;
           ligar_in <= '0';
           wait for 700 us;
           assert false report "ligando...." severity note;
           ligar_in <= '1';
         end if;
+
+      if (i=3) then
+        assert false report "atencao!" severity note;
+        UART_WRITE_BYTE ( Data_In=>"01100001", Serial_Out=>entrada_serial_in );
+      end if;
+
+      if(i=6) then
+        assert false report "volte!" severity note;
+        UART_WRITE_BYTE ( Data_In=>"01110110", Serial_Out=>entrada_serial_in );
+      end if;
 
     end loop;
 

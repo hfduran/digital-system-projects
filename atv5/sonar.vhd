@@ -78,8 +78,8 @@ architecture structural of sonar is
 
     component atencao_uc is
         port (
-          clock, voltar_in, atencao_in: in std_logic;
-          atencao: out std_logic
+          clock, reset, voltar_in, atencao_in: in std_logic;
+          atencao, db_estado: out std_logic
         );
     end component;
 
@@ -160,9 +160,11 @@ begin
     AUC : atencao_uc
     port map (
         clock => clock,
+        reset => reset,
         voltar_in => s_volta_in,
         atencao_in => s_atencao_in,
-        atencao => s_atencao
+        atencao => s_atencao,
+        db_estado => open
     );
     
     HEX0 : hexa7seg

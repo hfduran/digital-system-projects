@@ -3,43 +3,43 @@ use ieee.std_logic_1164.all;
 
 entity atencao_uc is
   port (
-    clock, voltar_in, atencao_in: in std_logic;
-    atencao: out std_logic
+    clock, reset, voltar_in, atencao_in: in std_logic;
+    atencao, db_estado: out std_logic
   );
 end entity;
 
 architecture arch of atencao_uc is
-  type tipo_estado is (normal, estado_atencao);
+  type tipo_estado is (normal, atencionado);
   signal Eatual, Eprox: tipo_estado;
-
 begin
-  processo_estado: process(clock, voltar_in, atencao_in)
+  process(reset, clock)
   begin
-    if (clock'event and clock = '1') then
-      case Eatual is
-        when normal =>
-          if (atencao_in = '1') then
-            Eprox <= estado_atencao;
-          else
-            Eprox <= normal;
-          end if;
-        when estado_atencao =>
-          if (voltar_in = '1') then
-            Eprox <= normal;
-          else
-            Eprox <= estado_atencao;
-          end if;
-      end case;
+    if reset = '1' then
+      Eatual <= normal;
+    elsif rising_edge(clock) then
+      Eatual <= Eprox;
     end if;
   end process;
 
-  processo_atencao: process(Eatual)
+  process(clock, atencao_in, voltar_in)
   begin
     case Eatual is
       when normal =>
-        atencao <= '0';
-      when estado_atencao =>
-        atencao <= '1';
+        if atencao_in = '1' then
+          Eprox <= atencionado;
+        else
+          Eprox <= normal;
+        end if;
+      when atencionado =>
+        if voltar_in = '1' then
+          Eprox <= normal;
+        else
+          Eprox <= atencionado;
+        end if;
+      when others => Eprox <= normal;
     end case;
   end process;
+
+  with Eatual select atencao <= '1' when atencionado, '0' when others;
+  with Eatual select db_estado <= '1' when atencionado, '0' when others;
 end architecture; 

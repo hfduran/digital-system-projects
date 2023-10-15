@@ -112,11 +112,18 @@ begin
     with Eatual select
         tx_step <= '1' when tx_distancia | prox_digito_distancia, '0' when others;
     with Eatual select
-        db_estado <= "0000" when inicial,
-                    "0001" when espera_medida,
-                    "0010" when tx_angulo,
-                    "0011" when tx_distancia, 
-                    "0100" when final, 
-                    "1110" when others;
+        db_estado <= 
+        "0000" when inicial,
+        "0001" when preparacao,
+        "0010" when rotina,
+        "0011" when espera_medida,
+        "0100" when tx_angulo,
+        "0101" when prox_digito_angulo,
+        "0110" when zera_digitos,
+        "0111" when tx_distancia,
+        "1000" when prox_digito_distancia,
+        "1001" when final,
+        "1010" when final_atencao,
+        "1110" when others;
 
 end architecture;
