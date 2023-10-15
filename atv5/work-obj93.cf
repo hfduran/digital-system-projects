@@ -23,9 +23,6 @@ file . "./common/registrador_n.vhd" "2342a586e10123b28155d3ecb8f051ab4052f712" "
 file . "./common/mux_8x1_n.vhd" "e5d2c2d7b7f7b886317a0e2c9561db691e3ea54a" "20231014233920.074":
   entity mux_8x1_n at 17( 783) + 0 on 209;
   architecture behav of mux_8x1_n at 38( 1521) + 0 on 210;
-file . "./sonar.vhd" "a0c1ecf33bb22c0a34f6cad7d54c4da8eb19c2ce" "20231014233920.059":
-  entity sonar at 1( 0) + 0 on 205;
-  architecture structural of sonar at 22( 617) + 0 on 206;
 file . "./sonar_uc.vhd" "7b217a63cf99e5f0e637ff0af9d24fd708cc7b99" "20231014233920.046":
   entity sonar_uc at 1( 0) + 0 on 201;
   architecture arch of sonar_uc at 28( 961) + 0 on 202;
@@ -77,9 +74,9 @@ file . "./controle_servo/circuito_pwm_tb.vhd" "b8e14888821b3b50338b906a8d5b2c560
 file . "./rx_serial/rx_serial_uc.vhd" "38e0b841100cbb92c93382880548fd098b9e7142" "20231014233920.039":
   entity rx_serial_uc at 17( 786) + 0 on 199;
   architecture rx_serial_uc_arch of rx_serial_uc at 38( 1380) + 0 on 200;
-file . "./sonar_tb.vhd" "cb8d42d8877c91b9ce4952aa5f634b67c8e75021" "20231014233920.053":
-  entity sonar_tb at 19( 834) + 0 on 203;
-  architecture tb of sonar_tb at 25( 910) + 0 on 204;
+file . "./sonar_tb.vhd" "1247eda22ca5a499715e41d8dafd53c3fb67042c" "20231015153449.534":
+  entity sonar_tb at 19( 834) + 0 on 235;
+  architecture tb of sonar_tb at 25( 910) + 0 on 236;
 file . "./common/gerador_pulso.vhd" "0433b73162991673dee57cb03b7c8953f4893f6e" "20231014233920.068":
   entity gerador_pulso at 18( 792) + 0 on 207;
   architecture fsm_arch of gerador_pulso at 36( 1186) + 0 on 208;
@@ -101,3 +98,6 @@ file . "./common/comparador.vhd" "8627dba03f3e37d785e2116a25df775c99d3baed" "202
 file . "./rx_serial/rx_serial_7O1_tb.vhd" "0f8559ff119d7089d2d3b974c3906c76e50a5d82" "20231014233920.017":
   entity rx_serial_tb at 19( 900) + 0 on 193;
   architecture tb of rx_serial_tb at 26( 1013) + 0 on 194;
+file . "sonar.vhd" "1e757dd005038697fcc7637fc2f64477cb351731" "20231015145826.878":
+  entity sonar at 1( 0) + 0 on 229;
+  architecture structural of sonar at 23( 651) + 0 on 230;

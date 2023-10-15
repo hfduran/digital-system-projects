@@ -72,14 +72,14 @@ architecture tb of sonar_tb is
   constant posicoes_teste : posicoes_teste_array :=
       ( 
         ( 1,  294),   --   5cm ( 294us)
-        ( 2,  353)    --   6cm ( 353us)
-        -- ( 2,  353),  --   6cm ( 353us)
-        -- ( 3, 5882),  -- 100cm (5882us)
-        -- ( 4, 5882),  -- 100cm (5882us)
-        -- ( 5,  882),  --  15cm ( 882us)
-        -- ( 6,  882),  --  15cm ( 882us)
-        -- ( 7, 5882),  -- 100cm (5882us)
-        -- ( 8,  588)   --  10cm ( 588us)
+        ( 2,  353),   --   6cm ( 353us)
+        ( 3,  353),  --   6cm ( 353us)
+        ( 4, 582),  -- 100cm (5882us)
+        ( 5, 582),  -- 100cm (5882us)
+        ( 6,  882),  --  15cm ( 882us)
+        ( 7,  882),  --  15cm ( 882us)
+        ( 8, 582),  -- 100cm (5882us)
+        ( 9,  588)   --  10cm ( 588us)
         -- inserir aqui outros posicoes de teste (inserir "," na linha anterior)
       );
 
@@ -148,7 +148,7 @@ begin
         assert false report "esperando de 400" severity note;
         -- 3) espera por 400us (simula tempo entre trigger e echo)
         wait for 400 us;
-     
+
         assert false report "esperando larguraPulso" severity note;
         -- 4) gera pulso de echo (largura = larguraPulso)
         echo_in <= '1';
@@ -157,7 +157,16 @@ begin
 
         assert false report "esperando fim_posicao" severity note;
         -- 5) espera sinal fim (indica final da medida de uma posicao do sonar)
-        wait until fim_posicao_out = '1';     
+        wait until fim_posicao_out = '1';
+
+        if (i = 2) then
+          assert false report "desligando...." severity note;
+          ligar_in <= '0';
+          wait for 700 us;
+          assert false report "ligando...." severity note;
+          ligar_in <= '1';
+        end if;
+
     end loop;
 
     wait for 400 us;

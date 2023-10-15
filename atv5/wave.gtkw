@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Sun Oct 15 15:37:40 2023
+[*]
+[dumpfile] "/home/hfduran/progs/labdig2/atv5/wave.vcd"
+[dumpfile_mtime] "Sun Oct 15 15:35:40 2023"
+[dumpfile_size] 443910417
+[savefile] "/home/hfduran/progs/labdig2/atv5/wave.gtkw"
+[timestart] 0
+[size] 1920 1016
+[pos] -1 -1
+*-41.204178 30666870000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] sonar_tb.
+[treeopen] sonar_tb.dut.
+[sst_width] 233
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 289
+@200
+-Entradas
+@29
+sonar_tb.ligar_in
+@28
+sonar_tb.echo_in
+sonar_tb.entrada_serial_in
+@200
+-FD
+@c00024
++{posicao} sonar_tb.dut.fd.s_selecao_angulo[2:0]
+@28
+(0)sonar_tb.dut.fd.s_selecao_angulo[2:0]
+(1)sonar_tb.dut.fd.s_selecao_angulo[2:0]
+(2)sonar_tb.dut.fd.s_selecao_angulo[2:0]
+@1401200
+-group_end
+@28
+sonar_tb.dut.fd.fim_medida
+sonar_tb.dut.fd.fim_transmissao
+@22
+sonar_tb.dut.fd.medida0[3:0]
+sonar_tb.dut.fd.medida1[3:0]
+sonar_tb.dut.fd.medida2[3:0]
+@200
+-Saidas
+@28
+sonar_tb.pwm_out
+sonar_tb.saida_serial_out
+sonar_tb.fim_posicao_out
+sonar_tb.dut.auc.atencao
+[pattern_trace] 1
+[pattern_trace] 0
