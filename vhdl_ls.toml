@@ -23,10 +23,10 @@ atv5.files = [
   'atv5/**/*.vhd',
 ]
 
-atv5-oracle.files = [
-  'atv5/**/*.vhd',
+elevador_sem1.files = [
+  'elevador_sem1/**/*.vhd',
 ]
 
-A5.files = [
-  'A5/**/*.vhd',
+elevador_sem2.files = [
+  'elevador_sem2/**/*.vhd',
 ]
