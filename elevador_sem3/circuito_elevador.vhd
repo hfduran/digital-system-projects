@@ -11,6 +11,7 @@ entity circuito_elevador is
         botoesCACima    : in  std_logic_vector (4 downto 0);
         echo            : in  std_logic;
         trigger         : out std_logic;
+        pwm             : out std_logic;
         motor_enable    : out std_logic;
         saida_motor1    : out std_logic;
         saida_motor2    : out std_logic;
@@ -26,7 +27,6 @@ architecture estrutural of circuito_elevador is
     component fluxo_dados is
         port (
             clock           : in  std_logic;
-            -- chaves          : in  std_logic_vector(4 downto 0);
             botoesCC        : in  std_logic_vector(4 downto 0);
             botoesCABaixo   : in  std_logic_vector(4 downto 0);
             botoesCACima    : in  std_logic_vector(4 downto 0);
@@ -37,10 +37,12 @@ architecture estrutural of circuito_elevador is
             contaT          : in  std_logic;
             zeraT           : in  std_logic;
             reset_interface : in  std_logic;
+            reset_servo     : in  std_logic;
             echo            : in  std_logic;
             conta_medir     : in  std_logic;
             zera_cont_medir : in  std_logic;
             trigger         : out std_logic;
+            pwm             : out std_logic;
             andarZero       : out std_logic;
             chamouCC        : out std_logic;
             temChamada      : out std_logic;
@@ -149,8 +151,10 @@ begin
         contaT          => s_contaT,
         zeraT           => s_zeraT,
         reset_interface => reset,
+        reset_servo     => reset,
         echo            => echo,
         trigger         => trigger,
+        pwm             => pwm,
         conta_medir     => s_conta_medir,
         zera_cont_medir => s_zera_cont_medir,
         andarZero       => s_andarZero,

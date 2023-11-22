@@ -6,7 +6,6 @@ use ieee.math_real.all;
 entity fluxo_dados is
     port (
         clock           : in  std_logic;
-        -- chaves          : in  std_logic_vector(4 downto 0);
         botoesCC        : in  std_logic_vector(4 downto 0);
         botoesCABaixo   : in  std_logic_vector(4 downto 0);
         botoesCACima    : in  std_logic_vector(4 downto 0);
@@ -17,10 +16,12 @@ entity fluxo_dados is
         contaT          : in  std_logic;
         zeraT           : in  std_logic;
         reset_interface : in  std_logic;
+        reset_servo     : in  std_logic;
         echo            : in  std_logic;
         conta_medir     : in  std_logic;
         zera_cont_medir : in  std_logic;
         trigger         : out std_logic;
+        pwm             : out std_logic;
         andarZero       : out std_logic;
         chamouCC        : out std_logic;
         temChamada      : out std_logic;
@@ -163,6 +164,15 @@ architecture estrutural of fluxo_dados is
         );
     end component;
 
+    component controle_servo is
+        port (
+        clock : in std_logic;
+        reset : in std_logic;
+        posicao : in std_logic_vector(2 downto 0);
+        controle : out std_logic
+        );
+    end component controle_servo;
+
     signal s_CC_mais_recente: std_logic_vector(2 downto 0);
 
     signal s_botoesCC      : std_logic_vector(4 downto 0);
@@ -209,6 +219,9 @@ architecture estrutural of fluxo_dados is
     signal s_encoded_botoesCABaixo : std_logic_vector(2 downto 0);
 
     signal s_chegouUltimo : std_logic;
+
+    signal s_porta_aberta: std_logic;
+    signal s_posicao_porta: std_logic_vector(2 downto 0);
 
 begin
     -- s_chaves        <= chaves;
@@ -342,15 +355,6 @@ begin
             sinal => s_or_botoesCABaixo,
             pulso => s_chamouCABaixo
         );
-    
-    -- encoderAndares : encoder_n
-    --     generic map (
-    --         N => 5
-    --     )
-    --     port map(
-    --         input => chaves,
-    --         output => s_encoded_chaves
-    --     );
 
     encoderBotoesCC : encoder_n
         port map (
@@ -382,15 +386,6 @@ begin
             menor => open
         );
         
-    -- registraAndar : registrador_n
-    --     port map (
-    --         clock => clock,
-    --         clear => '0',
-    --         enable => s_or_chaves,
-    --         D => s_encoded_chaves,
-    --         Q => s_andarAtual
-    --     );
-
     registra_CC_mais_recente : registrador_n
         port map (
             clock => clock,
@@ -412,6 +407,21 @@ begin
             Q => open,
             fim => fimT,
             meio => open
+        );
+
+    s_porta_aberta <= contaT;
+
+    with s_porta_aberta select s_posicao_porta <=
+        "000" when '0',
+        "111" when '1',
+        "000" when others;
+
+    CONTROLE_PORTA : controle_servo
+        port map (
+            clock => clock,
+            reset => reset_servo,
+            posicao => s_posicao_porta,
+            controle => pwm
         );
 
     ultimo_andar_inst: ultimo_andar
