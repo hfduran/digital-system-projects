@@ -30,3 +30,7 @@ elevador_sem1.files = [
 elevador_sem2.files = [
   'elevador_sem2/**/*.vhd',
 ]
+
+elevador_sem3.files = [
+  'elevador_sem3/**/*.vhd',
+]
