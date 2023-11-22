@@ -38,9 +38,12 @@ architecture estrutural of circuito_elevador is
             zeraT           : in  std_logic;
             reset_interface : in  std_logic;
             reset_servo     : in  std_logic;
+            reseta_transmissor : in  std_logic;
+            tx_step         : in  std_logic_vector(1 downto 0);
             echo            : in  std_logic;
             conta_medir     : in  std_logic;
             zera_cont_medir : in  std_logic;
+            transmitir      : in  std_logic;
             trigger         : out std_logic;
             pwm             : out std_logic;
             andarZero       : out std_logic;
@@ -53,6 +56,8 @@ architecture estrutural of circuito_elevador is
             calcDir         : out std_logic;
             calcDirCC       : out std_logic;
             fim_medida      : out std_logic;
+            fim_transmissao : out std_logic;
+            saida_serial    : out std_logic;
             db_andarAtual   : out std_logic_vector(2 downto 0);
             db_ultimo_andar : out std_logic_vector(2 downto 0)
         );
@@ -83,6 +88,17 @@ architecture estrutural of circuito_elevador is
             zeraM     : out std_logic;
             conta_medir, zera_cont_medir : out std_logic;
             db_estado : out std_logic_vector(3 downto 0)
+        );
+    end component;
+
+    component transmissor_uc is
+        port(
+            clock, reset: in std_logic;
+            fim_medida: in std_logic;
+            fim_transmissao: in std_logic;
+            reseta_transmissor: out std_logic;
+            transmitir: out std_logic;
+            tx_step: out std_logic_vector(1 downto 0)
         );
     end component;
     
@@ -117,6 +133,10 @@ architecture estrutural of circuito_elevador is
     signal s_db_ultimoAndar: std_logic_vector(2 downto 0);
     signal s_db_andarAtual_display: std_logic_vector(3 downto 0);
     signal s_db_ultimoAndar_display : std_logic_vector(3 downto 0);
+    signal s_reseta_transmissor: std_logic;
+    signal s_tx_step: std_logic_vector(1 downto 0);
+    signal s_transmitir: std_logic;
+    signal s_fim_transmissao: std_logic;
 
 begin
 
@@ -152,6 +172,10 @@ begin
         zeraT           => s_zeraT,
         reset_interface => reset,
         reset_servo     => reset,
+        transmitir      => s_transmitir,
+        reseta_transmissor => s_reseta_transmissor,
+        tx_step => s_tx_step,
+        fim_transmissao => s_fim_transmissao,
         echo            => echo,
         trigger         => trigger,
         pwm             => pwm,
@@ -198,6 +222,17 @@ begin
         db_estado   => s_db_estado,
 		fim_medida  => s_fim_medida
       );
+
+    transmissor_uc_inst : transmissor_uc
+        port map (
+            clock => clock,
+            reset => reset,
+            fim_medida => s_fim_medida,
+            fim_transmissao => s_fim_transmissao,
+            reseta_transmissor => s_reseta_transmissor,
+            transmitir => s_transmitir,
+            tx_step => s_tx_step
+        );
         
     DisplayEstado : hexa7seg
     port map (

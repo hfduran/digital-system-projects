@@ -17,9 +17,12 @@ entity fluxo_dados is
         zeraT           : in  std_logic;
         reset_interface : in  std_logic;
         reset_servo     : in  std_logic;
+        reseta_transmissor : in  std_logic;
+        tx_step         : in  std_logic_vector(1 downto 0);
         echo            : in  std_logic;
         conta_medir     : in  std_logic;
         zera_cont_medir : in  std_logic;
+        transmitir      : in  std_logic;
         trigger         : out std_logic;
         pwm             : out std_logic;
         andarZero       : out std_logic;
@@ -32,6 +35,8 @@ entity fluxo_dados is
         calcDir         : out std_logic;
         calcDirCC       : out std_logic;
         fim_medida      : out std_logic;
+        fim_transmissao : out std_logic;
+        saida_serial    : out std_logic;
         db_andarAtual   : out std_logic_vector(2 downto 0);
         db_ultimo_andar : out std_logic_vector(2 downto 0)
     );
@@ -49,6 +54,22 @@ architecture estrutural of fluxo_dados is
             medida    : out std_logic_vector(11 downto 0);
             pronto    : out std_logic;
             db_estado : out std_logic_vector(3 downto 0)
+        );
+    end component;
+
+    component tx_serial_7O1 is
+        port (
+            clock           : in  std_logic;
+            reset           : in  std_logic;
+            partida         : in  std_logic;
+            dados_ascii     : in  std_logic_vector(6 downto 0);
+            saida_serial    : out std_logic;
+            pronto          : out std_logic;
+            db_clock        : out std_logic;
+            db_tick         : out std_logic;
+            db_partida      : out std_logic;
+            db_saida_serial : out std_logic;
+            db_estado       : out std_logic_vector(6 downto 0)
         );
     end component;
 
@@ -194,6 +215,7 @@ architecture estrutural of fluxo_dados is
 
     signal s_or_chaves  : std_logic;
     signal s_andarAtual : std_logic_vector(2 downto 0);
+    signal s_andarAtualAscii : std_logic_vector(6 downto 0);
     signal s_ultimoAndar: std_logic_vector(2 downto 0);
     signal s_ultimoAndar_Baixo: std_logic_vector(2 downto 0);
     signal s_ultimoAndar_Cima: std_logic_vector(2 downto 0);
@@ -221,10 +243,12 @@ architecture estrutural of fluxo_dados is
     signal s_chegouUltimo : std_logic;
 
     signal s_porta_aberta: std_logic;
+    signal s_porta_aberta_ascii: std_logic_vector(6 downto 0);
     signal s_posicao_porta: std_logic_vector(2 downto 0);
 
+    signal s_dado_ascii: std_logic_vector(6 downto 0);
+
 begin
-    -- s_chaves        <= chaves;
     s_botoesCC      <= botoesCC;
     s_botoesCABaixo <= botoesCABaixo;
     s_botoesCACima  <= botoesCACima;
@@ -472,4 +496,23 @@ begin
     );
 
     s_andarAtual <= s_medida(2 downto 0);
+
+    s_andarAtualAscii <= "0110" & s_andarAtual;
+    s_porta_aberta_ascii <= "011000" & s_posicao_porta;
+
+    with tx_step select s_dado_ascii <=
+        s_andarAtualAscii when "00",
+        "0100011" when "01",
+        s_porta_aberta_ascii when "10",
+        "0101100" when others;
+
+    TRANSMISSOR : tx_serial_7O1
+    port map (
+        clock           => clock,
+        reset           => reseta_transmissor,
+        partida         => transmitir,
+        dados_ascii     => s_dado_ascii,
+        saida_serial    => saida_serial,
+        pronto          => fim_transmissao
+    );
 end architecture;
