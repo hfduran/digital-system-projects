@@ -1,0 +1,7 @@
+{
+	"common_dir" : "C:/Projetos/T4BB8/Semana2/labdig2-main/elevador_sem2/",
+	"acds_version" : "Version 20.1.1",
+	"platform" : "windows",
+	"os" : "Windows 7",
+	"qpf" : "quartus/circuito_elevador.qpf"
+}
